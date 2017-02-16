@@ -23,7 +23,6 @@ end
 
 
 %Intialize test_error and train_error vectors to store data to plot graph
-
 test_error = [];
 tr_error = [];
 [t1 t2] = solution(1,A,C);
