@@ -44,13 +44,11 @@ class LogisticRegression(object):
 
     def propagate(self, w, b, X, Y):
         """
-        Implement the cost function and its gradient for the propagation explained above
-
         Arguments:
-        w -- weights, a numpy array of size (num_px * num_px * 3, 1)
+        w -- weights, a numpy array of size (training example size, 1)
         b -- bias, a scalar
-        X -- data of size (num_px * num_px * 3, number of examples)
-        Y -- true "label" vector (containing 0 if non-cat, 1 if cat) of size (1, number of examples)
+        X -- data of size (training example size, number of examples)
+        Y -- true "label" vector (containing 1 if the client subscribed a term deposit, else 0) of size (1, number of examples)
 
         Return:
         cost -- negative log-likelihood cost for logistic regression
@@ -85,10 +83,10 @@ class LogisticRegression(object):
         This function optimizes w and b by running a gradient descent algorithm
 
         Arguments:
-        w -- weights, a numpy array of size (num_px * num_px * 3, 1)
+        w -- weights, a numpy array of size (training example size, 1)
         b -- bias, a scalar
-        X -- data of shape (num_px * num_px * 3, number of examples)
-        Y -- true "label" vector (containing 0 if non-cat, 1 if cat), of shape (1, number of examples)
+        X -- data of shape (training example size, number of examples)
+        Y -- true "label" vector (containing 1 if the client subscribed a term deposit, else 0), of shape (1, number of examples)
         num_iterations -- number of iterations of the optimization loop
         learning_rate -- learning rate of the gradient descent update rule
         print_cost -- True to print the loss every 100 steps
@@ -166,9 +164,9 @@ class LogisticRegression(object):
         Builds the logistic regression model by calling the function you've implemented previously
 
         Arguments:
-        X_train -- training set represented by a numpy array of shape (num_px * num_px * 3, m_train)
+        X_train -- training set represented by a numpy array of shape (training example size, m_train)
         Y_train -- training labels represented by a numpy array (vector) of shape (1, m_train)
-        X_test -- test set represented by a numpy array of shape (num_px * num_px * 3, m_test)
+        X_test -- test set represented by a numpy array of shape (training example size, m_test)
         Y_test -- test labels represented by a numpy array (vector) of shape (1, m_test)
         num_iterations -- hyperparameter representing the number of iterations to optimize the parameters
         learning_rate -- hyperparameter representing the learning rate used in the update rule of optimize()
@@ -267,8 +265,8 @@ if __name__ == "__main__":
     print ("test_set_y shape: " + str(y_test.shape) + "\n")
 
     LR = LogisticRegression()
-    #d = LR.model(X_train, y_train, X_test, y_test, num_iterations = 2000, learning_rate = 0.005, print_cost = True)
-    #LR.plot_learning_curve(d)
+    # d = LR.model(X_train, y_train, X_test, y_test, num_iterations = 2000, learning_rate = 0.005, print_cost = True)
+    # LR.plot_learning_curve(d)
 
     learning_rates = [0.1, 0.01]
     models = {}
